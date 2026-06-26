@@ -45,9 +45,10 @@ export const generateGraphicTsxHandler = async (req: Request, res: Response): Pr
     }
     await patchGraphicGenerationMetadata(supabase, id, { generationStatus: 'queued', generationError: null });
     const label = `graphics-tsx ${id}`;
+    const userId = typeof req.body?.userId === 'string' ? req.body.userId.trim() : '';
     scheduleBackgroundGraphicGeneration(label, async () => {
       try {
-        await runGraphicsTsxGeneration(supabase, { graphicId: id });
+        await runGraphicsTsxGeneration(supabase, { graphicId: id, userId: userId || undefined });
       } catch (error) {
         const msg = error instanceof Error ? error.message : String(error);
         await patchGraphicGenerationMetadata(supabase, id, { generationStatus: 'failed', generationError: msg });

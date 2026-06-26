@@ -12,10 +12,10 @@ export type Graphic = {
 
 export type GraphicRow = {
   id: string;
-  title: string;
-  canvas_width_px: number;
-  canvas_height_px: number;
-  metadata: unknown;
+  title?: string;
+  canvas_width_px?: number;
+  canvas_height_px?: number;
+  metadata?: unknown;
   created_at: string;
   updated_at: string;
 };

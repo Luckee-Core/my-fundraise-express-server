@@ -6,6 +6,7 @@ import { initManagedClients } from './src/services/managed';
 import { createDataRouter } from './src/data/router';
 import { createPitchDeckSlideStudioRouter } from './src/services/pitch-deck-slide-studio';
 import { createInvestorExtractRouter } from './src/services/investor-extract';
+import { createBusinessContextRouter } from './src/services/business-context';
 import { startServer } from './src/services/server';
 
 dotenv.config();
@@ -29,6 +30,9 @@ const bootstrap = async (): Promise<void> => {
 
   app.use('/api/pitch-deck-slide-studio', createPitchDeckSlideStudioRouter());
   console.log('✅ [bootstrap] Pitch deck slide studio mounted at /api/pitch-deck-slide-studio');
+
+  app.use('/api/business-context', createBusinessContextRouter());
+  console.log('✅ [bootstrap] Business context API mounted at /api/business-context');
 
   setupErrorHandling(app);
   startServer(app, {

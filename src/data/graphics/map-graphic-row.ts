@@ -19,7 +19,7 @@ const metadataRecord = (value: unknown): Record<string, unknown> => {
 /** Maps a Supabase row to the API Graphic shape. */
 export const mapGraphicRow = (row: GraphicRow): Graphic => ({
   id: row.id,
-  title: row.title.trim() || 'Untitled graphic',
+  title: (row.title ?? '').trim() || 'Untitled graphic',
   canvasWidthPx: clampCanvas(row.canvas_width_px, DEFAULT_CANVAS_W),
   canvasHeightPx: clampCanvas(row.canvas_height_px, DEFAULT_CANVAS_H),
   metadata: metadataRecord(row.metadata),

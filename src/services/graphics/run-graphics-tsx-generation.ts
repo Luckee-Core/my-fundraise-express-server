@@ -2,12 +2,17 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { getGraphicById } from '../../data/graphics';
 import { patchGraphicGenerationMetadata, patchGraphicStudioDraft } from '../../data/graphics/patch-studio-draft';
 import { buildGraphicsTsxPrompt } from '../../utils/graphics';
+import {
+  GRAPHICS_BUSINESS_CONTEXT_SECTION_KEYS,
+  loadBusinessContextForPrompt,
+} from '../../utils/business-context';
 import { getCursorClient } from '../cursor';
 import { extractTsxFromConversation } from '../cursor/extract-tsx-from-conversation';
 import { pollAgentStatus } from '../cursor/poll-agent-status';
 
 export type RunGraphicsTsxGenerationInput = {
   graphicId: string;
+  userId?: string;
 };
 
 export type RunGraphicsTsxGenerationResult = {
@@ -47,11 +52,27 @@ export const runGraphicsTsxGeneration = async (
   });
 
   const cursorClient = getCursorClient();
+
+  let businessContextBlock = '';
+  const userId = input.userId?.trim();
+  if (userId) {
+    try {
+      const ctx = await loadBusinessContextForPrompt(supabase, {
+        userId,
+        sectionKeys: [...GRAPHICS_BUSINESS_CONTEXT_SECTION_KEYS],
+      });
+      businessContextBlock = ctx.formatted;
+    } catch (error) {
+      console.error('❌ runGraphicsTsxGeneration business context load failed', error);
+    }
+  }
+
   const prompt = buildGraphicsTsxPrompt({
     title: graphic.title,
     creativeBrief,
     canvasWidthPx: graphic.canvasWidthPx,
     canvasHeightPx: graphic.canvasHeightPx,
+    businessContextBlock,
   });
 
   console.log(`🚀 Launching Cursor agent for graphic ${graphicId}: ${graphic.title}`);

@@ -3,16 +3,21 @@ export type GraphicsTsxPromptInput = {
   creativeBrief: string;
   canvasWidthPx: number;
   canvasHeightPx: number;
+  businessContextBlock?: string;
 };
 
 /** Builds the Cursor agent prompt for standalone graphics TSX generation. */
 export const buildGraphicsTsxPrompt = (input: GraphicsTsxPromptInput): string => {
+  const contextSection = input.businessContextBlock?.trim()
+    ? `\n\n${input.businessContextBlock.trim()}\n`
+    : '';
+
   return `Generate a single Next.js "use client" React component as a fixed-size marketing graphic.
 
 Title: ${input.title}
 Canvas width: ${input.canvasWidthPx}px
 Canvas height: ${input.canvasHeightPx}px
-
+${contextSection}
 Creative brief:
 ${input.creativeBrief}
 
