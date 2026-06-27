@@ -1,6 +1,13 @@
 export { listPitchDeckSlidesByPitchDeckId } from './list-by-pitch-deck-id';
-export { getPitchDeckSlideByDeckAndSlideKey } from './get-by-deck-and-slide-key';
-export { upsertPitchDeckSlide } from './upsert';
+export { getPitchDeckSlideByDeckAndTemplateKey } from './get-by-deck-and-template-key';
+export { createPitchDeckSlide } from './create';
+export { updatePitchDeckSlide } from './update';
+export { reorderPitchDeckSlides } from './reorder';
 export { deletePitchDeckSlide } from './delete';
 export { createPitchDeckSlidesRouter } from './router';
-export type { PitchDeckSlideRow, UpsertPitchDeckSlideInput } from './types';
+export type {
+  PitchDeckSlideRow,
+  CreatePitchDeckSlideInput,
+  UpdatePitchDeckSlideInput,
+  ReorderPitchDeckSlidesInput,
+} from './types';

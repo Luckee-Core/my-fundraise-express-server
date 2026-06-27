@@ -10,7 +10,7 @@ import {
   listPitchDeckSlideStudioResponsesByIds,
   updatePitchDeckSlideStudioRequestCompletion,
 } from '../../data/pitch-deck-slide-studio';
-import { getPitchDeckSlideByDeckAndSlideKey } from '../../data/pitch-deck-slides';
+import { getPitchDeckSlideByDeckAndTemplateKey } from '../../data/pitch-deck-slides';
 import { generateCompletion } from '../ai';
 import { getModelConfig } from '../ai/model-config';
 import {
@@ -117,7 +117,7 @@ export const processPitchDeckSlideStudioChat = async (
   slideKey: PitchDeckSlideStudioSlideKey,
   userMessageContent: string,
 ): Promise<void> => {
-  const slideRow = await getPitchDeckSlideByDeckAndSlideKey(supabase, pitchDeckId, slideKey);
+  const slideRow = await getPitchDeckSlideByDeckAndTemplateKey(supabase, pitchDeckId, slideKey);
   const slideContentJson = (slideRow?.content_json ?? {}) as Record<string, unknown>;
 
   const requestId = randomUUID();

@@ -256,7 +256,8 @@ export const DECK_E_SEED_FACTS: DeckESeedFact[] = [
   {
     sectionKey: 'fundraising',
     factKey: 'ask_use_of_funds',
-    factValue: '$250K team; $250K tokens, hardware pilots, module polish.',
+    factValue:
+      'Marketing and sales automation; coding tokens and software subscriptions; field install with one lead technician (electrician and carpenter), service truck, ethernet runs, and device storage.',
     sortOrder: 2,
   },
   {

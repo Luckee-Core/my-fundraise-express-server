@@ -7,7 +7,9 @@
     "start": "ts-node index.ts",
     "dev": "nodemon --exec ts-node index.ts",
     "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build:watch": "tsc --watch",
+    "generate:deck-e-seed": "npm run build && node scripts/generate-deck-e-seed-sql.mjs",
+    "generate:deck-e-graphics-seed": "npm run build && node scripts/generate-deck-e-graphics-seed-sql.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.106.0",
