@@ -7,6 +7,7 @@ import { createDataRouter } from './src/data/router';
 import { createPitchDeckSlideStudioRouter } from './src/services/pitch-deck-slide-studio';
 import { createInvestorExtractRouter } from './src/services/investor-extract';
 import { createBusinessContextRouter } from './src/services/business-context';
+import { createApiDocsRouter } from './src/services/api-docs';
 import { startServer } from './src/services/server';
 
 dotenv.config();
@@ -33,6 +34,9 @@ const bootstrap = async (): Promise<void> => {
 
   app.use('/api/business-context', createBusinessContextRouter());
   console.log('✅ [bootstrap] Business context API mounted at /api/business-context');
+
+  app.use('/', createApiDocsRouter());
+  console.log('✅ [bootstrap] API docs mounted at GET /api-docs.json');
 
   setupErrorHandling(app);
   startServer(app, {

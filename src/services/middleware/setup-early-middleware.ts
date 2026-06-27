@@ -6,13 +6,30 @@
 import cors from 'cors';
 import express, { Express } from 'express';
 
+const parseCorsOrigins = (): string[] | undefined => {
+  const raw = process.env.CORS_ORIGINS?.trim();
+  if (!raw) {
+    return undefined;
+  }
+  const origins = raw
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  return origins.length > 0 ? origins : undefined;
+};
+
 export const setupEarlyMiddleware = (app: Express): void => {
-  // CORS middleware
-  app.use(cors());
-  
-  // JSON body parsing middleware
+  const corsOrigins = parseCorsOrigins();
+  app.use(
+    cors(
+      corsOrigins
+        ? {
+            origin: corsOrigins,
+          }
+        : undefined,
+    ),
+  );
+
   app.use(express.json());
-  
-  // URL-encoded body parsing middleware
   app.use(express.urlencoded({ extended: true }));
 };

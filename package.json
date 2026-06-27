@@ -1,7 +1,16 @@
 {
-  "name": "express-server-template",
+  "name": "my-fundraise-express-server",
   "version": "1.0.0",
-  "description": "Express API Server Template - Ready-to-use Express server with TypeScript",
+  "description": "Express API for My Fundraise — investors, graphics, pitch decks",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luckee-Core/my-fundraise-express-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Luckee-Core/my-fundraise-express-server/issues"
+  },
+  "homepage": "https://github.com/Luckee-Core/my-fundraise-express-server#readme",
   "main": "index.ts",
   "scripts": {
     "start": "ts-node index.ts",
