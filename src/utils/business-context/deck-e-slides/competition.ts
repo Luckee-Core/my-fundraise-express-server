@@ -5,29 +5,70 @@ export const competitionTsx = `export default function Slide() {
     <div className={styles.root}>
       <p className={styles.slideTag}>Competition</p>
       <main className={styles.main}>
-        <div className={styles.stack}>
-          <h1 className={styles.headline}>Cloud sprawl vs GPU-heavy on-prem vs Luckee.</h1>
-          <div className={styles.table}>
-            <div className={styles.row}>
-              <p className={styles.colLabel}>Cloud AI / Big SaaS</p>
-              <p className={styles.colBody}>Vendor-owned memory; bolt-on AI. No install — SaaS only.</p>
-            </div>
-            <div className={styles.row}>
-              <p className={styles.colLabel}>DevXT-class on-prem</p>
-              <p className={styles.colBody}>Larger GPUs; always-on agents; appliance drop-ship.</p>
-            </div>
-            <div className={styles.rowHighlight}>
-              <p className={styles.colLabel}>Luckee</p>
-              <p className={styles.colBody}>
-                Module menu; AIP/NBA; less GPU. Luckee installs and maintains. Your data; you approve actions.
-              </p>
-            </div>
-          </div>
-          <p className={styles.close}>
-            DevXT-class appliances compete on <span className={styles.emphasis}>inference duty cycle</span>. Luckee
-            competes on <span className={styles.emphasis}>workflows you own</span>.
-          </p>
+        <h1 className={styles.headline}>Less GPU. More software. AI where it helps.</h1>
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th className={styles.thCorner} scope="col" />
+                <th className={styles.thLuckee} scope="col">
+                  Luckee
+                </th>
+                <th className={styles.th} scope="col">
+                  Cloud AI / Big SaaS
+                </th>
+                <th className={styles.th} scope="col">
+                  GPU on-prem appliances
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th className={styles.rowHead} scope="row">
+                  Software + Postgres run the workflow loop
+                </th>
+                <td className={styles.cell}>✓</td>
+                <td className={styles.cell}>—</td>
+                <td className={styles.cell}>—</td>
+              </tr>
+              <tr>
+                <th className={styles.rowHead} scope="row">
+                  AIP + NBA — staged AI; operator approves
+                </th>
+                <td className={styles.cell}>✓</td>
+                <td className={styles.cell}>~</td>
+                <td className={styles.cell}>—</td>
+              </tr>
+              <tr>
+                <th className={styles.rowHead} scope="row">
+                  Data and workflows stay on your LAN
+                </th>
+                <td className={styles.cell}>✓</td>
+                <td className={styles.cell}>—</td>
+                <td className={styles.cell}>✓</td>
+              </tr>
+              <tr>
+                <th className={styles.rowHead} scope="row">
+                  Installed and maintained like traditional software
+                </th>
+                <td className={styles.cell}>✓</td>
+                <td className={styles.cell}>—</td>
+                <td className={styles.cell}>~</td>
+              </tr>
+              <tr>
+                <th className={styles.rowHead} scope="row">
+                  Accessible brain box — minimal GPU, retail-class desktop
+                </th>
+                <td className={styles.cell}>✓</td>
+                <td className={styles.cell}>~</td>
+                <td className={styles.cell}>—</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+        <p className={styles.close}>
+          Low GPU need = an AI brain anyone can afford to install.
+        </p>
       </main>
       <div className={styles.branding} aria-hidden>${luckeeMarkJsx}
       </div>
@@ -37,28 +78,34 @@ export const competitionTsx = `export default function Slide() {
 
 const styles = {${lightSlideBaseStyles}
   main: \`
-    mx-auto flex min-h-0 w-full max-w-[1600px] flex-1 flex-col justify-center px-20 pb-24 pt-28 text-left
+    mx-auto flex min-h-0 w-full max-w-[1680px] flex-1 flex-col justify-center gap-7 px-24 pb-20 pt-28 text-left
   \`,
   headline: \`
-    m-0 max-w-[1400px] text-balance text-[36px] font-semibold leading-[1.2] tracking-[-0.02em] text-gray-900
+    m-0 text-[36px] font-semibold leading-[1.2] tracking-[-0.02em] text-gray-900
+  \`,
+  tableWrap: \`
+    w-full min-w-0 max-w-[1680px] overflow-x-auto
   \`,
   table: \`
-    flex w-full max-w-[1400px] flex-col gap-4
+    w-full border-collapse text-left text-[18px] text-gray-800
   \`,
-  row: \`
-    grid grid-cols-[minmax(0,14rem)_minmax(0,1fr)] gap-6 rounded-xl border border-solid border-gray-200 bg-zinc-50 px-8 py-6
+  thCorner: \`
+    w-[32%] border-b border-r border-gray-200 bg-white p-0
   \`,
-  rowHighlight: \`
-    grid grid-cols-[minmax(0,14rem)_minmax(0,1fr)] gap-6 rounded-xl border border-solid border-[#FF7C1E] bg-orange-50/40 px-8 py-6
+  thLuckee: \`
+    border-b border-gray-200 bg-white px-4 py-3.5 text-left text-[16px] font-semibold uppercase tracking-[0.14em] text-[#FF7C1E]
   \`,
-  colLabel: \`
-    m-0 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#FF7C1E]
+  th: \`
+    border-b border-gray-200 bg-white px-4 py-3.5 text-left text-[16px] font-semibold uppercase tracking-[0.14em] text-gray-700
   \`,
-  colBody: \`
-    m-0 text-[22px] font-normal leading-[1.45] text-gray-800
+  rowHead: \`
+    border-b border-r border-gray-200 bg-white px-4 py-3 text-left text-[17px] font-medium leading-snug text-gray-800
+  \`,
+  cell: \`
+    border-b border-gray-200 px-4 py-3 text-center text-[26px] font-semibold text-gray-900
   \`,
   close: \`
-    m-0 max-w-[1400px] text-[24px] font-normal leading-[1.4] text-gray-700
+    m-0 border-t border-solid border-gray-200 pt-6 text-[26px] font-semibold leading-[1.35] tracking-[-0.01em] text-gray-900
   \`,${lightSlideBrandingStyles}
 };
 `;

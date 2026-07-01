@@ -28,6 +28,9 @@ export const DECK_E_SLIDE_ORDER: DeckESlideTemplateKey[] = [
   'problem',
   'solution',
   'market',
+  'business_model',
+  'go_to_market',
+  'competition',
   'ask',
   'back_cover',
 ];

@@ -190,23 +190,36 @@ export const DECK_E_SEED_FACTS: DeckESeedFact[] = [
   },
   {
     sectionKey: 'competition',
-    factKey: 'comp_cloud_saas',
-    factValue: 'Cloud AI and Big SaaS — vendor owns your memory; integration sprawl.',
+    factKey: 'comp_headline',
+    factValue: 'Less GPU. More software. AI where it helps.',
     sortOrder: 0,
+  },
+  {
+    sectionKey: 'competition',
+    factKey: 'comp_cloud_saas',
+    factValue:
+      'Cloud AI / Big SaaS — full-loop AI in vendor cloud; partial on staged AI and accessible brain box.',
+    sortOrder: 1,
   },
   {
     sectionKey: 'competition',
     factKey: 'comp_on_prem_peers',
     factValue:
-      'Other on-prem AI models (DevXT, etc.) — focus on larger GPUs, always-on agents, open-ended chat.',
-    sortOrder: 1,
+      'GPU on-prem appliances — full-loop inference on hardware; not software-first or retail-class desktop.',
+    sortOrder: 2,
   },
   {
     sectionKey: 'competition',
     factKey: 'comp_luckee_contrast',
     factValue:
-      'Luckee — module menu, AIP/NBA process, less GPU, operator-approved actions; Luckee installs and maintains.',
-    sortOrder: 2,
+      'Luckee — software + Postgres run the loop; AIP/NBA staged AI; operator approves; minimal GPU; Luckee installs and maintains.',
+    sortOrder: 3,
+  },
+  {
+    sectionKey: 'competition',
+    factKey: 'comp_close',
+    factValue: 'Low GPU need = an AI brain anyone can afford to install.',
+    sortOrder: 4,
   },
   {
     sectionKey: 'founder',

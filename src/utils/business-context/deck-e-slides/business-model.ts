@@ -6,22 +6,36 @@ export const businessModelTsx = `export default function Slide() {
       <p className={styles.slideTag}>Business model</p>
       <main className={styles.main}>
         <div className={styles.stack}>
-          <h1 className={styles.headline}>Two revenue streams. One module menu.</h1>
-          <div className={styles.streams}>
-            <div className={styles.streamCard}>
-              <p className={styles.streamLabel}>Stream 1</p>
-              <p className={styles.streamBody}>
-                <span className={styles.emphasis}>Installation + maintenance</span> — hardware, Luckee modules on your
-                LAN, ongoing support contract.
-              </p>
-            </div>
-            <div className={styles.streamCard}>
-              <p className={styles.streamLabel}>Stream 2</p>
-              <p className={styles.streamBody}>
-                <span className={styles.emphasis}>Pro Cloud</span> — same modules, hosted by Luckee.
-              </p>
-            </div>
-          </div>
+          <h1 className={styles.headline}>Install once. Luckee Care keeps it running.</h1>
+          <ul className={styles.list}>
+            <li className={styles.listItem}>
+              <span className={styles.bullet} aria-hidden>·</span>
+              <span>
+                <span className={styles.emphasis}>~$1,500–$2,500</span> year-one install — box, modules, and setup on
+                your LAN
+              </span>
+            </li>
+            <li className={styles.listItem}>
+              <span className={styles.bullet} aria-hidden>·</span>
+              <span>
+                <span className={styles.emphasis}>Warranty + two semiannual check-ups</span> bundled with install —
+                HVAC-style
+              </span>
+            </li>
+            <li className={styles.listItem}>
+              <span className={styles.bullet} aria-hidden>·</span>
+              <span>
+                <span className={styles.emphasis}>Luckee Care</span> from year two — ~$250–$450/yr maintenance contract
+              </span>
+            </li>
+            <li className={styles.listItem}>
+              <span className={styles.bullet} aria-hidden>·</span>
+              <span>
+                Module upgrades and custom builds over time →{' '}
+                <span className={styles.emphasis}>~$5k customer lifetime value</span>
+              </span>
+            </li>
+          </ul>
         </div>
       </main>
       <div className={styles.branding} aria-hidden>${luckeeMarkJsx}
@@ -31,21 +45,23 @@ export const businessModelTsx = `export default function Slide() {
 }
 
 const styles = {${lightSlideBaseStyles}
+  main: \`
+    flex min-h-0 w-full flex-1 flex-col justify-center px-20 pb-24 pt-28 text-left
+  \`,
+  stack: \`
+    flex w-full max-w-[1280px] flex-col gap-8
+  \`,
   headline: \`
-    m-0 max-w-[1100px] text-balance text-[40px] font-semibold leading-[1.18] tracking-[-0.02em] text-gray-900
+    m-0 max-w-[1200px] text-balance text-[48px] font-semibold leading-[1.14] tracking-[-0.02em] text-gray-900
   \`,
-  streams: \`
-    grid w-full max-w-[1100px] grid-cols-2 gap-8
+  list: \`
+    m-0 flex list-none flex-col gap-5 p-0
   \`,
-  streamCard: \`
-    flex min-h-[180px] flex-col justify-start rounded-2xl border border-solid border-gray-200
-    border-l-[4px] border-l-[#FF7C1E] bg-zinc-50 px-8 py-8
+  listItem: \`
+    flex gap-4 text-[28px] font-normal leading-[1.45] tracking-[-0.01em] text-gray-800
   \`,
-  streamLabel: \`
-    m-0 mb-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#FF7C1E]
-  \`,
-  streamBody: \`
-    m-0 text-[24px] font-normal leading-[1.45] tracking-[-0.01em] text-gray-700
+  bullet: \`
+    mt-1 shrink-0 text-[28px] font-bold leading-none text-[#FF7C1E]
   \`,${lightSlideBrandingStyles}
 };
 `;
